@@ -109,8 +109,8 @@
         radius: 7,
       },
       position: {
-        x: 20,
-        y: 15,
+        x: 0,
+        y: 0,
       },
       inlineArrangement: 'equidistant',
       scale: 5,
@@ -167,6 +167,7 @@
     display: block;
     vertical-align: bottom;
   }
+
   /* ---- tsparticles container ---- */
   #tsparticles {
     position: absolute;
@@ -177,6 +178,21 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .flex-vertical-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-box {
+    flex: 1;
   }
 </style>
 
@@ -235,21 +251,23 @@
 
 <div>
   <main>
-    <!--<Particles class="hidden" options={particlesConfig} on:particlesLoaded={onParticlesLoaded} />-->
     <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
       <div
         class="absolute top-0 w-full h-full bg-center bg-cover"
         style="
           background-image: url(https://ipfs.rarible.com/ipfs/QmUPQQC2G5mwjZV22K5Nv1Y5ARad4jgR8cv2UEK4Ltx3Cq/image.gif);
         ">
+      
         <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black" />
+        
       </div>
-      <div class="container relative mx-auto">
-        <div class="items-center flex flex-wrap">
-          <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-            <div class="relative pr-0 w-2/5 ml-auto mr-auto">
+      <div class="container relative flex-vertical-container ml-auto mr-auto">
+        <div class="items-center">
+          <div class="w-full px-4 ml-auto mr-auto text-center">
+            <div class="center pr-0 ml-auto mr-auto flex-box">
+              <Particles options={particlesConfig} on:particlesLoaded={onParticlesLoaded} />
               {#if visible}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 124">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 124">
                   <g out:fade={{duration: 200}} opacity="1">
                     <path in:expand={{duration: 400, delay: 1000, easing: quintOut}} style="fill: #43e296;" d={outer} />
                     <path
@@ -257,18 +275,18 @@
                       style="stroke:#000000; stroke-width: 1.5; fill: #43e296;"
                       d={inner} />
                   </g>
-                </svg>
+                </svg> -->
 
-                <div class="text-white text-3xl" out:fly={{y: -20, duration: 800}}>
-                  {#each 'Creaton' as char, i}
-                    <span in:fade={{delay: 1000 + i * 150, duration: 800}}>{char}</span>
+                <div class="text-white text-5xl" out:fly={{y: -50, duration: 100}}>
+                  {#each 'Decentralized Content Sharing Platform' as char, i}
+                    <span in:fade={{delay: 1000 + i * 150, duration: 600}}>{char}</span>
                   {/each}
                 </div>
               {/if}
             </div>
           </div>
         </div>
-      </div>
+      </div> 
       <div
         class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
         style="transform: translateZ(0);">
